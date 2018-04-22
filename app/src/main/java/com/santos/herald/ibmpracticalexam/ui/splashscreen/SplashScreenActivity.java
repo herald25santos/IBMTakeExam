@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.santos.herald.ibmpracticalexam.BuildConfig;
 import com.santos.herald.ibmpracticalexam.R;
 import com.santos.herald.ibmpracticalexam.ui.main.MainActivity;
@@ -50,13 +52,26 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void initViews() {
         if (BuildConfig.FLAVOR.equalsIgnoreCase("production")) {
-            imgBackground.setBackgroundResource(R.drawable.background);
+            Glide.with(this)
+                    .load(R.drawable.background)
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgBackground);
             tvTitle.setText("Weather Application (Production)");
         } else if (BuildConfig.FLAVOR.equalsIgnoreCase("dev")) {
-            imgBackground.setBackgroundResource(R.drawable.background2);
+            Glide.with(this)
+                    .load(R.drawable.background2)
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgBackground);
             tvTitle.setText("Weather Application (Dev)");
         } else {
-            imgBackground.setBackgroundResource(R.drawable.background2);
+            Glide.with(this)
+                    .load(R.drawable.background2)
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imgBackground);
+            tvTitle.setText("Weather Application (Production)");
         }
     }
 }
