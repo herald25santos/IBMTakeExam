@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="error_network_internet">Please ensure you have internet access.</string>
+    <string name="error_host">Can\'t find host.</string>
+    <string name="error_network_timeout">Connection Network timeout.</string>
+    <string name="error_server_problem">There is something wrong in the server.</string>
+    <string name="error_server">Can\'t connect to server.</string>
+    <string name="error_saving">Error on saving data / Null pointer exist.</string>
+    <string name="error_credential">Incorrect Username or Password.</string>
+    <string name="error_credential_does_not_exist">Username doesn\'t exist</string>
+    <string name="error_validation_min">Minimum value is %1$s.</string>
+    <string name="error_validation_max">Maximum value is %1$s.</string>
+    <string name="error_this_field">This field is required.</string>
+    <string name="error_invalid_email">Invalid Email.</string>
+
+
+</resources>

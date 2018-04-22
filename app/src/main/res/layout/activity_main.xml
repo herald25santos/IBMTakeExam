@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activityMain"
+    style="@style/CoordinatorLayout">
+
+    <include
+        android:id="@+id/appBarLayout"
+        layout="@layout/view_appbarlayout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/containerButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

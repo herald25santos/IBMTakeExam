@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["compileSdkVersion"]
+    buildToolsVersion globalConfiguration["buildToolsVersion"]
+    flavorDimensions globalConfiguration["flavorDimensions"]
+    defaultConfig {
+        applicationId globalConfiguration["applicationId"]
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["targetSdkVersion"]
+        versionCode globalConfiguration["codeVersion"]
+        versionName globalConfiguration["versionName"]
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+            // applicationIdSuffix ".prod.debug"
+            // versionNameSuffix "-prod-debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        apptest {
+            resValue "string", "app_name", "Weather App (Test)"
+            dimension "tier"
+            buildConfigField 'String', 'HOST', '"http://samples.openweathermap.org/"'
+        }
+        dev {
+            resValue "string", "app_name", "Weather App (Dev)"
+            dimension "tier"
+            buildConfigField 'String', 'HOST', '"http://samples.openweathermap.org/"'
+        }
+        production {
+            resValue "string", "app_name", "Weather App (Production)"
+            dimension "tier"
+            buildConfigField 'String', 'HOST', '"http://samples.openweathermap.org/"'
+        }
+    }
+
+
+}
+
+dependencies {
+    def supportDependencies = rootProject.ext.supportDependencies
+    def appDependencies = rootProject.ext.appDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //Android Support
+    implementation supportDependencies.design
+    implementation supportDependencies.support
+    implementation supportDependencies.appcompat
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.cardView
+
+    //Retrofit2
+    implementation appDependencies.retrofit2
+    implementation appDependencies.retrofit2Adapter
+    implementation appDependencies.retrofit2Converter
+    implementation appDependencies.retrofit2Gson
+
+    //Json Converter Serialize
+    implementation appDependencies.gson
+    implementation group: 'com.google.code.gson', name: 'gson', version: "$appDependencies.gsonVersion"
+
+    //Okhttp
+    implementation appDependencies.okhttp3
+    implementation appDependencies.okhttp3Interceptor
+
+    //Rxjava2
+    implementation appDependencies.rxJava2
+    implementation appDependencies.rxJava2Android
+    implementation appDependencies.rxRelay2
+    implementation appDependencies.rxBinding2
+
+    //Dagger2
+    implementation appDependencies.dagger2
+    annotationProcessor appDependencies.dagger2Compiler
+
+    //Other Libraries
+    implementation appDependencies.butterKnife
+    annotationProcessor appDependencies.butterKnifeCompiler
+    implementation appDependencies.glide
+    //annotationProcessor appDependencies.glideCompiler
+    implementation appDependencies.sdp
+
+
+    //Development
+    debugImplementation developmentDependencies.leakCanary
+    releaseImplementation developmentDependencies.leakCanaryCompile
+    androidTestImplementation developmentDependencies.leakCanaryCompile
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}

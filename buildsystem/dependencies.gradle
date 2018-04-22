@@ -1,0 +1,86 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+
+    // Sdk and tools
+    minSdkVersion                 = 16
+    targetSdkVersion              = 27
+    compileSdkVersion             = 27
+    buildToolsVersion             = '27.0.3'
+    flavorDimensions              = 'tier'
+    applicationId                 = 'com.santos.herald.ibmpracticalexam'
+    codeVersion                   = 3333
+    versionName                   = '3.3'
+
+    //support
+    supportVersion                = '27.1.1'
+
+    //Libraries
+    rxKotlin2Version              = '2.1.0'
+    rxJava2Version                = '2.0.7'
+    rxAndroidVersion              = '2.0.1'
+    rxLibraries                   = '2.0.0'
+    dagger2Version                = '2.12'
+    retrofit2Version              = '2.2.0'
+    retrofitAdapterVersion        = '1.4.0'
+    okhttp3Version                = '3.6.0'
+    gsonVersion                   = '2.7'
+    glideVersion                  = '3.7.0'
+    archLifeCycleVersion          = '1.0.0'
+    butterKnifeVersion            = '8.8.1'
+    sdpVersion                    = '1.0.2'
+    circleIndicatorVersion        = '1.2.2@aar'
+    realmStethoVersion            = '2.0.0'
+    stethoFacebookVersion         = '1.5.0'
+    calligraphyVersion            = '2.2.0'
+    materialStepperVersion        = '3.3.0'
+    materialDialogVersion         = '0.9.0.2'
+    topSnackBarVersion            = '1.1.1'
+
+    //Development
+    leakCanaryVersion             = '1.5'
+
+
+    supportDependencies = [
+            design:                 "com.android.support:design:${supportVersion}",
+            support:                "com.android.support:support-v4:${supportVersion}",
+            appcompat:              "com.android.support:appcompat-v7:${supportVersion}",
+            recyclerView:           "com.android.support:recyclerview-v7:${supportVersion}",
+            cardView:               "com.android.support:cardview-v7:${supportVersion}",
+            palette:                "com.android.support:palette-v7:${supportVersion}",
+            percent:                "com.android.support:percent-v7:${supportVersion}",
+            vectorDrawable:         "com.android.support:animated-vector-drawable:${supportVersion}",
+            annotations:            "com.android.support-annotations:percent-v7:${supportVersion}",
+    ]
+
+    appDependencies = [
+            retrofit2:              "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            retrofit2Adapter:       "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
+            retrofit2Converter:     "com.squareup.retrofit2:converter-scalars:${retrofit2Version}",
+            retrofit2Gson:          "com.squareup.retrofit2:converter-gson:${retrofit2Version}",
+            gson:                   "com.google.code.gson:gson:${gsonVersion}",
+            okhttp3:                "com.squareup.okhttp3:okhttp:${okhttp3Version}",
+            okhttp3Interceptor:     "com.squareup.okhttp3:logging-interceptor:${okhttp3Version}",
+            rxKotlin2:              "io.reactivex.rxjava2:rxkotlin:${rxKotlin2Version}",
+            rxJava2:                "io.reactivex.rxjava2:rxjava:${rxJava2Version}",
+            rxJava2Android:         "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxRelay2:               "com.jakewharton.rxrelay2:rxrelay:${rxLibraries}",
+            rxBinding2:             "com.jakewharton.rxbinding2:rxbinding:${rxLibraries}",
+            dagger2:                "com.google.dagger:dagger:${dagger2Version}",
+            dagger2Compiler:        "com.google.dagger:dagger-compiler:${dagger2Version}",
+            butterKnife:            "com.jakewharton:butterknife:${butterKnifeVersion}",
+            butterKnifeCompiler:    "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            sdp:                    "com.intuit.sdp:sdp-android:${sdpVersion}",
+            glide:                  "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler:          "com.github.bumptech.glide:compiler:${glideVersion}",
+    ]
+
+    developmentDependencies = [
+            leakCanary:             "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            leakCanaryCompile:      "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+    ]
+}
